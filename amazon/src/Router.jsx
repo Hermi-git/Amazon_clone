@@ -5,6 +5,7 @@ import SignUp from './Pages/Auth/SignUp'
 import Payment from './Pages/Payment/Payment'
 import Orders from './Pages/Orders/Orders'
 import Cart from './Pages/Cart/Cart'
+import Result from './Pages/Results/Result'
 function Routering() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function Routering() {
             <Route path='/auth' element={<SignUp/>}/>
             <Route path='/payment' element={<Payment/>}/>
             <Route path='/orders' element={<Orders/>}/>
+            <Route path='/category/:categoryName' element={<Result/>}/>
             <Route path='/cart' element={<Cart/>}/>
         </Routes>
     </Router>

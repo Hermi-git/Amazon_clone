@@ -5,7 +5,7 @@ export const categoryInfos =[ {
 },
  {
     title: "Discover Fashion trends",
-    name: "Women's clothing",
+    name: "women's clothing",
     imgLink: "https://nypost.com/wp-content/uploads/sites/2/2024/01/workwear.jpg?quality=75&strip=all"
  }, 
  {
