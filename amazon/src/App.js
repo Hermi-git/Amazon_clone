@@ -3,7 +3,7 @@ import Routering from './Router';
 
 function App() {
   return (
-    <Routering></Routering>
+    <Routering/>
   );
 }
 
