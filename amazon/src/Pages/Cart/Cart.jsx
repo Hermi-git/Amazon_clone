@@ -5,12 +5,29 @@ import ProductCard from '../../components/Product/ProductCard'
 import CurrencyFormat from '../../components/currencyFormat/CurrencyFormat'
 import { Link } from 'react-router-dom'
 import classes from './Cart.module.css'
+import {Type} from '../../Utility/action.type'
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 function Cart() {
   const [{basket, user}, dispatch] = useContext(DataContext)
   const total = basket.reduce((amount, item)=>{
-    return item.price + amount
+    return item.price * item.amount + amount
   }, 0)
+
+ const increment = (item)=>{
+ dispatch({
+  type : Type.ADD_TO_BASKET,
+  item
+ })
+ }
+  const decrement = (id)=>{
+    dispatch({
+      type: Type.REMOVE_FROM_BASKET,
+      id
+    })
+  }
+
   return (
     <Layout>
       <section className={classes.container}>
@@ -21,12 +38,20 @@ function Cart() {
 
           {
             basket?.length===0?(<p> Opps ! No item in your cart!</p>) : (basket?.map((item, i)=>{
-              return <ProductCard
+              return<section className={classes.cart__product}>
+              <ProductCard
               key ={i}
               product={item}
               renderDesc={true}
               flex={true}
               renderAdd={false}/>
+              <div className={classes.btn_container}>
+                <button className={classes.btn} onClick={()=> increment(item)}><IoIosArrowUp /></button>
+                <span>{item.amount}</span>
+                <button className={classes.btn} onClick={()=> decrement(item.id)}><IoIosArrowDown /></button>
+              </div>
+            
+            </section>
             }))
           }
         </div>

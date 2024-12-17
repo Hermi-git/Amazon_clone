@@ -1,3 +1,4 @@
 export const Type = {
-    ADD_TO_BASKET : 'ADD TO BASKET'
+    ADD_TO_BASKET : 'ADD TO BASKET',
+    REMOVE_FROM_BASKET : 'REMOVE_FROM_BASKET'
 }
