@@ -6,10 +6,11 @@ import { BiCart } from "react-icons/bi";
 import LowerHeader from './LowerHeader';
 import { Link } from 'react-router-dom';
 import { DataContext } from '../DataProvider/DataProvider';
+import {auth} from '../../Utility/firebase'
 
 
 function Header() {
-    const [{basket}, dispatch] = useContext(DataContext)
+    const [{user, basket}, dispatch] = useContext(DataContext)
     console.log(basket.length)
 
     const totalItem = basket?.reduce((amount, item)=>{
@@ -44,7 +45,7 @@ function Header() {
                 </select>
                 <input type="text" name='' id='' placeholder='Search product'/>
                 {/* icon */}
-                <BsSearch  size={25}/>
+                <BsSearch  size={38}/>
             </div>
             
             {/* right side links */}
@@ -58,9 +59,25 @@ function Header() {
                 </Link>
                 
                 {/* three components */}
-                <Link to="/auth">
-                    <p>Sign In</p>
-                    <span>Account & Lists</span>
+                <Link to={!user && "/auth"}>
+                    <div>
+                        {
+                        user? (
+                        <>
+                        <p>Hello {user?.email?.split("@")[0]}</p>
+                        <span onClick={()=>auth.signOut()}>Sign Out</span>
+                        </>
+                        ): (
+                        <>
+                        <p>Sign In</p>
+                        <span>Account & Lists</span>
+                        </>
+                        )
+                        }
+                    
+                    </div>
+                    
+                    
                 </Link>
                 {/* orders */}
                 <Link to="/orders">
@@ -69,7 +86,7 @@ function Header() {
                 </Link>
                 {/* cart */}
                 <Link to='/cart' className={classes.cart}>
-                <BiCart size={35}/>
+                <BiCart size={38}/>
                 <span>{totalItem}</span>
                 </Link>
                </div>
