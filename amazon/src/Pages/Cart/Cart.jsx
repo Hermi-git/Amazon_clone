@@ -66,7 +66,7 @@ function Cart() {
               <input type="checkbox" />
               <small>This folder contain a gift</small>
             </span>
-          <Link to='/payments'>
+          <Link to='/payment'>
           Continue to checkOut
           </Link>
         </div>
@@ -77,5 +77,6 @@ function Cart() {
     
   )
 }
+
 
 export default Cart
