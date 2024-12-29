@@ -11,7 +11,7 @@ function Product() {
     setLoading(true)
      axios.get('https://fakestoreapi.com/products')
      .then((res)=>{
-        console.log(res)
+        // console.log(res)
         setProducts(res.data)
         setLoading(false)
      }).catch((err)=>{

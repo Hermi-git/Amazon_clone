@@ -30,4 +30,4 @@ function Routering() {
   )
 }
 
-export default Routering
+export default Routering;
